@@ -53,5 +53,7 @@ EXPOSE 10000
 
 CMD php artisan migrate --force && \
     php artisan storage:link || true && \
+    php artisan optimize:clear && \
+    php artisan config:cache && \
     php-fpm -D && \
     nginx -g "daemon off;"
