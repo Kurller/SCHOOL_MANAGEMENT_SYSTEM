@@ -9,20 +9,34 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('school_settings', function (Blueprint $table) {
-            $table->string('logo')->nullable()->after('current_term');
-            $table->string('principal_signature')->nullable()->after('logo');
-            $table->string('school_stamp')->nullable()->after('principal_signature');
+            if (!Schema::hasColumn('school_settings', 'logo')) {
+                $table->string('logo')->nullable()->after('current_term');
+            }
+
+            if (!Schema::hasColumn('school_settings', 'principal_signature')) {
+                $table->string('principal_signature')->nullable();
+            }
+
+            if (!Schema::hasColumn('school_settings', 'school_stamp')) {
+                $table->string('school_stamp')->nullable();
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('school_settings', function (Blueprint $table) {
-            $table->dropColumn([
-                'logo',
-                'principal_signature',
-                'school_stamp',
-            ]);
+            if (Schema::hasColumn('school_settings', 'logo')) {
+                $table->dropColumn('logo');
+            }
+
+            if (Schema::hasColumn('school_settings', 'principal_signature')) {
+                $table->dropColumn('principal_signature');
+            }
+
+            if (Schema::hasColumn('school_settings', 'school_stamp')) {
+                $table->dropColumn('school_stamp');
+            }
         });
     }
 };
