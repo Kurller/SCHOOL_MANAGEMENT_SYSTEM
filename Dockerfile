@@ -2,6 +2,7 @@ FROM php:8.2-fpm
 
 # Install system packages
 RUN apt-get update && apt-get install -y \
+    nginx \
     git \
     unzip \
     zip \
@@ -39,14 +40,22 @@ COPY . .
 # Install PHP packages
 RUN composer install --no-dev --optimize-autoloader
 
-# Install frontend packages
+# Install Node packages
 RUN npm install
 
 # Build Vite assets
 RUN npm run build
 
+# Copy nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy startup script
+COPY start.sh /start.sh
+
+RUN chmod +x /start.sh
+
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-EXPOSE 9000
+EXPOSE 80
 
-CMD ["php-fpm"]
+CMD ["/start.sh"]
