@@ -1,59 +1,530 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎓 School Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A modern, role-based **School Management System** built with **Laravel 12**, designed to simplify the management of students, teachers, classes, attendance, results, fees, and school administration.
 
-## About Laravel
+The system provides separate dashboards and permissions for **Administrators, Principals, Teachers, Accountants, Students, Parents**, ensuring secure access to school resources.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 🚀 Live Demo
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Application**
 
-## Learning Laravel
+> https://school-management-system-tlwx.onrender.com
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+> **Note**
+>
+> This project is hosted on the **Render Free Plan** using a free cloud database.
+>
+> If the demo becomes unavailable because the free database expires, please refer to the YouTube demonstration below.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+# 🎥 Project Walkthrough
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+A complete walkthrough of the application is available here:
 
-### Premium Partners
+**YouTube Demo**
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+> https://youtube.com/YOUR_VIDEO_LINK
 
-## Contributing
+The video demonstrates:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- User Authentication
+- Role Based Access Control
+- Student Management
+- Teacher Management
+- Class Management
+- Subject Management
+- Attendance
+- Results
+- Fees
+- Parent Portal
+- Student Portal
+- Report Cards
+- School Settings
 
-## Code of Conduct
+---
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 📷 Screenshots
 
-## Security Vulnerabilities
+(Add screenshots here)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Example:
 
-## License
+```
+screenshots/
+    login.png
+    dashboard.png
+    students.png
+    results.png
+    attendance.png
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+# ✨ Features
+
+## Authentication
+
+- Login
+- Forgot Password
+- Password Reset
+- Profile Management
+
+---
+
+## Role Based Access Control (RBAC)
+
+Roles include:
+
+- Administrator
+- Principal
+- Teacher
+- Accountant
+- Student
+- Parent
+
+Each role has its own permissions and dashboard.
+
+---
+
+## Student Management
+
+- Register students
+- Edit student information
+- Student profile
+- Student enrollment
+- Parent assignment
+
+---
+
+## Teacher Management
+
+- Add teachers
+- Assign teachers to classes
+- Assign teachers to subjects
+
+---
+
+## Class Management
+
+- Create classes
+- Assign class teachers
+- Manage class subjects
+
+---
+
+## Subject Management
+
+- Create subjects
+- Assign subjects to classes
+
+---
+
+## Attendance
+
+- Take attendance
+- View attendance history
+- Attendance reports
+
+---
+
+## Results
+
+- Enter examination scores
+- Automatic grading
+- Position calculation
+- Report card generation
+
+---
+
+## Fees
+
+- Fee records
+- Payment tracking
+- Outstanding balances
+
+---
+
+## Parent Portal
+
+Parents can:
+
+- View children
+- View results
+- View attendance
+- View report cards
+- View fees
+
+---
+
+## Student Portal
+
+Students can:
+
+- View results
+- View report cards
+- View attendance
+- View fees
+
+---
+
+## Reports
+
+- PDF Export
+- Excel Export
+
+---
+
+## School Settings
+
+- School information
+- Logo upload
+- Signature upload
+
+---
+
+# 🛠 Built With
+
+- Laravel 12
+- PHP 8.2
+- MySQL
+- Blade
+- Bootstrap
+- Docker
+- Nginx
+- PHP-FPM
+- Composer
+
+---
+
+# 📂 Project Structure
+
+```
+school_management/
+│
+├── app/
+├── bootstrap/
+├── config/
+├── database/
+├── docker-compose.yml
+├── Dockerfile
+├── nginx.conf
+├── public/
+├── resources/
+├── routes/
+├── storage/
+├── tests/
+├── vendor/
+└── README.md
+```
+
+---
+
+# ⚙️ Installation
+
+## Clone Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/school-management.git
+
+cd school-management
+```
+
+---
+
+## Install Dependencies
+
+```bash
+composer install
+```
+
+---
+
+## Copy Environment File
+
+```bash
+cp .env.example .env
+```
+
+Windows
+
+```bash
+copy .env.example .env
+```
+
+---
+
+## Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+---
+
+## Configure Database
+
+Update your `.env`
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=school_management
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+---
+
+## Run Migrations
+
+```bash
+php artisan migrate
+```
+
+---
+
+## Seed Database (Optional)
+
+```bash
+php artisan db:seed
+```
+
+---
+
+## Start Development Server
+
+```bash
+php artisan serve
+```
+
+Open
+
+```
+http://127.0.0.1:8000
+```
+
+---
+
+# 🐳 Docker Setup
+
+## Requirements
+
+- Docker Desktop
+- Docker Compose
+
+---
+
+## Build Containers
+
+```bash
+docker compose build
+```
+
+---
+
+## Start Containers
+
+```bash
+docker compose up -d
+```
+
+---
+
+## Verify Containers
+
+```bash
+docker compose ps
+```
+
+---
+
+## Stop Containers
+
+```bash
+docker compose down
+```
+
+---
+
+## View Logs
+
+```bash
+docker compose logs
+```
+
+---
+
+## Execute Commands Inside Container
+
+```bash
+docker compose exec app bash
+```
+
+Example
+
+```bash
+php artisan migrate
+
+php artisan optimize:clear
+
+composer install
+```
+
+---
+
+# Docker Architecture
+
+```
+                Browser
+                    │
+                    ▼
+               Nginx Container
+                    │
+                    ▼
+             PHP-FPM Container
+                    │
+                    ▼
+               Laravel 12
+                    │
+                    ▼
+            MySQL Database
+```
+
+---
+
+# Deployment
+
+This application can be deployed on
+
+- Render
+- Railway
+- DigitalOcean
+- AWS
+- Azure
+- Google Cloud
+- VPS with Docker
+
+---
+
+# Environment Variables
+
+Example
+
+```env
+APP_NAME=School Management System
+
+APP_ENV=production
+
+APP_DEBUG=false
+
+APP_URL=https://your-domain.com
+
+DB_CONNECTION=mysql
+
+DB_HOST=
+
+DB_PORT=
+
+DB_DATABASE=
+
+DB_USERNAME=
+
+DB_PASSWORD=
+
+MAIL_MAILER=smtp
+
+MAIL_HOST=smtp.gmail.com
+
+MAIL_PORT=587
+
+MAIL_USERNAME=
+
+MAIL_PASSWORD=
+```
+
+---
+
+# Testing
+
+Run tests
+
+```bash
+php artisan test
+```
+
+---
+
+# Security
+
+Never commit
+
+- `.env`
+- Database credentials
+- API Keys
+- Mail passwords
+
+---
+
+# Future Improvements
+
+- SMS Notifications
+- Online Fee Payment
+- Mobile Application
+- Multi-school (SaaS)
+- Timetable Generator
+- AI Student Assistant
+- AI Report Generator
+- Biometric Attendance
+- REST API
+- GraphQL API
+
+---
+
+# Known Limitation
+
+The public demo is hosted on **Render Free Plan** with a **free cloud database**.
+
+Free cloud databases may expire or become inactive after a period of inactivity.
+
+If the hosted demo is unavailable, please watch the full application walkthrough here:
+
+**YouTube**
+
+https://youtube.com/YOUR_VIDEO_LINK
+
+The source code remains fully functional and can be run locally using the installation or Docker instructions provided above.
+
+---
+
+# Contributing
+
+Pull requests are welcome.
+
+For major changes, please open an issue first to discuss the proposed change.
+
+---
+
+# License
+
+This project is released under the MIT License.
+
+---
+
+# Author
+
+**Kolawole Oladejo**
+
+Backend Software Engineer
+
+GitHub:
+https://github.com/Kurller
+
+LinkedIn:
+https://linkedin.com/in/kolaquadry
+
+Email:
+YOUR_EMAIL
