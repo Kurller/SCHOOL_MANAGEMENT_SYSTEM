@@ -1,8 +1,7 @@
 FROM php:8.2-fpm
 
+# Install system packages
 RUN apt-get update && apt-get install -y \
-    nginx \
-    supervisor \
     git \
     unzip \
     zip \
@@ -14,8 +13,10 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     default-mysql-client \
-    && rm -rf /var/lib/apt/lists/*
+    nodejs \
+    npm
 
+# PHP Extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 RUN docker-php-ext-install \
@@ -28,26 +29,24 @@ RUN docker-php-ext-install \
     bcmath \
     gd
 
+# Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
 COPY . .
 
+# Install PHP packages
 RUN composer install --no-dev --optimize-autoloader
 
-RUN php artisan config:clear || true
-RUN php artisan route:clear || true
-RUN php artisan view:clear || true
+# Install frontend packages
+RUN npm install
+
+# Build Vite assets
+RUN npm run build
 
 RUN chown -R www-data:www-data storage bootstrap/cache
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY start.sh /start.sh
+EXPOSE 9000
 
-RUN chmod +x /start.sh
-
-EXPOSE 10000
-
-CMD ["/start.sh"]
+CMD ["php-fpm"]
