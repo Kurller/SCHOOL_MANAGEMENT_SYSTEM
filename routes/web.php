@@ -25,9 +25,8 @@ use App\Http\Controllers\ParentController;
 use App\Http\Controllers\Student\ResultController as StudentResultController;
 
 Route::get('/', function () {
-    return 'Docker is working!';
-});
-/*
+    return redirect()->route('dashboard');
+});/*
 |--------------------------------------------------------------------------
 | Authenticated Users
 |--------------------------------------------------------------------------
