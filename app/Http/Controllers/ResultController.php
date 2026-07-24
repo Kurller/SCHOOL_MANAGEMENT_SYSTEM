@@ -14,15 +14,18 @@ class ResultController extends Controller
 {
     public function index()
     {
-        $setting = SchoolSetting::first();
+       $setting = SchoolSetting::first();
 
-        $query = Result::with([
-            'student',
-            'schoolClass',
-            'subject'
-        ])
-        ->where('term', $setting->current_term)
-        ->where('session', $setting->current_session);
+$query = Result::with([
+    'student',
+    'schoolClass',
+    'subject'
+]);
+
+if ($setting) {
+    $query->where('term', $setting->current_term)
+          ->where('session', $setting->current_session);
+}
 
 
         if (auth()->user()->role->name === 'Teacher') {

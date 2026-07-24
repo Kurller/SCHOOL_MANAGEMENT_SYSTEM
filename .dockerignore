@@ -1,6 +1,6 @@
-vendor
-node_modules
 .git
-.env
+.gitignore
+node_modules
+vendor
 storage/logs
-bootstrap/cache/*.php
+.env
