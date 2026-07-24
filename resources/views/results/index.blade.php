@@ -80,34 +80,35 @@
 
                             <td class="text-center space-x-2">
 
-                                <a href="{{ route('results.show',$result) }}"
-                                   class="bg-blue-600 text-white px-3 py-1 rounded">
-                                    View
-                                </a>
+    <a href="{{ route('results.show', $result) }}"
+       class="bg-blue-600 text-white px-3 py-1 rounded">
+        View
+    </a>
 
-                                <a href="{{ route('results.edit',$result) }}"
-                                   class="bg-yellow-500 text-white px-3 py-1 rounded">
-                                    Edit
-                                </a>
+    <a href="{{ route('results.edit', $result) }}"
+       class="bg-yellow-500 text-white px-3 py-1 rounded">
+        Edit
+    </a>
 
-                                <form action="{{ route('results.destroy',$result) }}"
-                                      method="POST"
-                                      class="inline">
+    <a href="{{ route('report-cards.show', $result->id) }}"
+       class="bg-green-600 text-white px-3 py-1 rounded">
+        Report Card
+    </a>
 
-                                    @csrf
-                                    @method('DELETE')
+    <form action="{{ route('results.destroy', $result) }}"
+          method="POST"
+          class="inline">
+        @csrf
+        @method('DELETE')
 
-                                    <button
-                                        onclick="return confirm('Delete this result?')"
-                                        class="bg-red-600 text-white px-3 py-1 rounded">
-                                        Delete
-                                    </button>
+        <button
+            onclick="return confirm('Delete this result?')"
+            class="bg-red-600 text-white px-3 py-1 rounded">
+            Delete
+        </button>
+    </form>
 
-                                </form>
-
-                            </td>
-
-                        </tr>
+</td>                        </tr>
 
                     @empty
 
