@@ -22,11 +22,11 @@ use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\ParentDashboardController;
 use App\Http\Controllers\ParentController;
 
-use App\Http\Controllers\Student\ResultController as StudentResultController;
-
 Route::get('/', function () {
     return redirect()->route('dashboard');
-});/*
+});
+
+/*
 |--------------------------------------------------------------------------
 | Authenticated Users
 |--------------------------------------------------------------------------
@@ -131,9 +131,13 @@ Route::middleware(['auth', 'role:Admin,Accountant'])->group(function () {
 |--------------------------------------------------------------------------
 | Student Portal
 |--------------------------------------------------------------------------
+| Consolidated into a single group. Previously this was split across four
+| separate route groups, one of which had no auth middleware at all
+| (a security hole) and another of which silently duplicated the
+| 'student.results.index' route name pointing at a different controller.
 */
 
-Route::middleware([])    
+Route::middleware(['auth', 'role:Student'])
     ->prefix('student')
     ->name('student.')
     ->group(function () {
@@ -141,8 +145,17 @@ Route::middleware([])
         Route::get('/dashboard', [StudentDashboardController::class, 'index'])
             ->name('dashboard');
 
-        Route::get('/results', [StudentResultController::class, 'index'])
+        Route::get('/results', [ResultController::class, 'index'])
             ->name('results.index');
+
+        Route::get('/report-cards', [ReportCardController::class, 'index'])
+            ->name('report-cards.index');
+
+        Route::get('/attendances', [AttendanceController::class, 'index'])
+            ->name('attendances.index');
+
+        Route::get('/fees', [FeeController::class, 'index'])
+            ->name('fees.index');
 
     });
 
@@ -173,33 +186,5 @@ Route::middleware(['auth', 'role:Parent'])
             ->name('report-card');
 
     });
-Route::middleware(['auth'])->prefix('student')->name('student.')->group(function () {
-
-    Route::get('/results', [ResultController::class, 'index'])
-        ->name('results.index');
-
-
-    Route::get('/report-card', [ReportCardController::class, 'index'])
-        ->name('report-card');
-
-});
-Route::middleware(['auth'])->prefix('student')->name('student.')->group(function () {
-
-    Route::get('/attendances', [AttendanceController::class, 'index'])
-        ->name('attendances.index');
-
-});
-Route::middleware(['auth'])->prefix('student')->name('student.')->group(function () {
-
-    Route::get('/report-cards', [ReportCardController::class, 'index'])
-        ->name('report-cards.index');
-
-});
-Route::middleware(['auth'])->prefix('student')->name('student.')->group(function () {
-
-    Route::get('/fees', [FeeController::class, 'index'])
-        ->name('fees.index');
-
-});
 
 require __DIR__.'/auth.php';

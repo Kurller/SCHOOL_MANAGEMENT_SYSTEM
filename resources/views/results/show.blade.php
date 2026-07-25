@@ -13,23 +13,23 @@
             <!-- School Header -->
             <div class="bg-violet-700 text-white p-8 text-center">
 
-                @if($setting && $setting->logo)
-                    <img src="{{ asset('storage/'.$setting->logo) }}"
+                @if($school && $school->logo)
+                    <img src="{{ asset('storage/'.$school->logo) }}"
                          class="w-24 h-24 mx-auto mb-4 object-contain">
                 @endif
 
                 <h1 class="text-3xl font-bold">
-                    {{ $setting->school_name }}
+                    {{ $school->school_name }}
                 </h1>
 
-                <p>{{ $setting->motto }}</p>
+                <p>{{ $school->motto }}</p>
 
-                <p>{{ $setting->address }}</p>
+                <p>{{ $school->address }}</p>
 
                 <p>
-                    {{ $setting->phone }}
+                    {{ $school->phone }}
                     |
-                    {{ $setting->email }}
+                    {{ $school->email }}
                 </p>
 
             </div>
@@ -53,12 +53,12 @@
 
                     <div>
                         <strong>Session:</strong><br>
-                        {{ $setting->current_session }}
+                        {{ $school->current_session }}
                     </div>
 
                     <div>
                         <strong>Term:</strong><br>
-                        {{ $setting->current_term }}
+                        {{ $school->current_term }}
                     </div>
 
                 </div>
@@ -134,11 +134,35 @@
                         <tr>
 
                             <td class="font-bold pr-6">
+                                Total Score
+                            </td>
+
+                            <td>
+                                {{ number_format($total,2) }}
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="font-bold pr-6">
                                 Average Score
                             </td>
 
                             <td>
                                 {{ number_format($average,2) }}
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td class="font-bold pr-6">
+                                Position
+                            </td>
+
+                            <td>
+                                {{ $position }}
                             </td>
 
                         </tr>
@@ -153,9 +177,9 @@
 
                     <div class="text-center">
 
-                        @if($setting && $setting->principal_signature)
+                        @if($school && $school->principal_signature)
 
-                            <img src="{{ asset('storage/'.$setting->principal_signature) }}"
+                            <img src="{{ asset('storage/'.$school->principal_signature) }}"
                                  class="h-20 mx-auto">
 
                         @endif
@@ -168,9 +192,9 @@
 
                     <div class="text-center">
 
-                        @if($setting && $setting->school_stamp)
+                        @if($school && $school->school_stamp)
 
-                            <img src="{{ asset('storage/'.$setting->school_stamp) }}"
+                            <img src="{{ asset('storage/'.$school->school_stamp) }}"
                                  class="h-24 mx-auto">
 
                         @endif
