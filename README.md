@@ -26,7 +26,7 @@ A complete walkthrough of the application is available here:
 
 **YouTube Demo**
 
-> https://youtube.com/YOUR_VIDEO_LINK
+> https://youtu.be/hvSwedKLQyI
 
 The video demonstrates:
 
@@ -46,20 +46,6 @@ The video demonstrates:
 
 ---
 
-# 📷 Screenshots
-
-(Add screenshots here)
-
-Example:
-
-```
-screenshots/
-    login.png
-    dashboard.png
-    students.png
-    results.png
-    attendance.png
-```
 
 ---
 
