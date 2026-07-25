@@ -35,7 +35,8 @@
                                 <option value="">Select Student</option>
 
                                 @foreach($students as $student)
-                                    <option value="{{ $student->id }}">
+                                    <option value="{{ $student->id }}"
+                                        {{ old('student_id') == $student->id ? 'selected' : '' }}>
                                         {{ $student->student_id }}
                                         -
                                         {{ $student->first_name }}
@@ -55,7 +56,8 @@
                                 <option value="">Select Class</option>
 
                                 @foreach($classes as $class)
-                                    <option value="{{ $class->id }}">
+                                    <option value="{{ $class->id }}"
+                                        {{ old('school_class_id') == $class->id ? 'selected' : '' }}>
                                         {{ $class->class_name }}
                                     </option>
                                 @endforeach
@@ -72,7 +74,8 @@
                                 <option value="">Select Subject</option>
 
                                 @foreach($subjects as $subject)
-                                    <option value="{{ $subject->id }}">
+                                    <option value="{{ $subject->id }}"
+                                        {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
                                         {{ $subject->subject_name }}
                                     </option>
                                 @endforeach
@@ -85,10 +88,20 @@
                                 Term
                             </label>
 
+                            @php
+                                $currentTerm = old('term', $setting->current_term ?? '');
+                            @endphp
+
                             <select name="term" class="w-full border rounded p-2">
-                                <option>First Term</option>
-                                <option>Second Term</option>
-                                <option>Third Term</option>
+                                <option value="First Term" {{ $currentTerm == 'First Term' ? 'selected' : '' }}>
+                                    First Term
+                                </option>
+                                <option value="Second Term" {{ $currentTerm == 'Second Term' ? 'selected' : '' }}>
+                                    Second Term
+                                </option>
+                                <option value="Third Term" {{ $currentTerm == 'Third Term' ? 'selected' : '' }}>
+                                    Third Term
+                                </option>
                             </select>
                         </div>
 
@@ -101,8 +114,14 @@
                             <input
                                 type="text"
                                 name="session"
-                                value="{{ old('session','2026/2027') }}"
+                                value="{{ old('session', $setting->current_session ?? '') }}"
                                 class="w-full border rounded p-2">
+
+                            @if(empty($setting))
+                                <p class="text-sm text-red-600 mt-1">
+                                    No school setting found — please set the current term and session in School Settings first.
+                                </p>
+                            @endif
                         </div>
 
                         <!-- CA -->

@@ -14,18 +14,18 @@ class ResultController extends Controller
 {
     public function index()
     {
-       $setting = SchoolSetting::first();
+        $setting = SchoolSetting::first();
 
-$query = Result::with([
-    'student',
-    'schoolClass',
-    'subject'
-]);
+        $query = Result::with([
+            'student',
+            'schoolClass',
+            'subject'
+        ]);
 
-if ($setting) {
-    $query->where('term', $setting->current_term)
-          ->where('session', $setting->current_session);
-}
+        if ($setting) {
+            $query->where('term', $setting->current_term)
+                  ->where('session', $setting->current_session);
+        }
 
 
         if (auth()->user()->role->name === 'Teacher') {
@@ -77,6 +77,8 @@ if ($setting) {
 
         $subjects = Subject::where('status', 'Active')->get();
 
+        $setting = SchoolSetting::first();
+
 
         if (auth()->user()->role->name === 'Teacher') {
 
@@ -102,7 +104,8 @@ if ($setting) {
         return view('results.create', compact(
             'students',
             'classes',
-            'subjects'
+            'subjects',
+            'setting'
         ));
     }
 

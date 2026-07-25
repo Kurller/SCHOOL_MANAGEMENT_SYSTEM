@@ -17,20 +17,12 @@ class ParentModel extends Model
         'address',
     ];
 
-
-    /**
-     * Parent belongs to a user account
-     */
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
-
-    /**
-     * Parent can have many students
-     */
-    public function children()
+    public function students()
     {
         return $this->belongsToMany(
             Student::class,
