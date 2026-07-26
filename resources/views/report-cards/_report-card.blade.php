@@ -4,8 +4,7 @@
     <div class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 text-white p-6 sm:p-8 text-center">
 
         @if($school && $school->logo)
-            <img
-                src="{{ asset('storage/'.$school->logo) }}"
+            <img src="{{ $setting->logo }}"
                 class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 object-cover">
         @endif
 

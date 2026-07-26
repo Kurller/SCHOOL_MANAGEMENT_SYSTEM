@@ -195,7 +195,7 @@
 
                             @if($school && $school->school_stamp)
 
-                                <img src="{{ asset('storage/'.$school->school_stamp) }}"
+                                <img src="{{ $setting->stamp }}"
                                      class="h-24 mx-auto">
 
                             @endif
