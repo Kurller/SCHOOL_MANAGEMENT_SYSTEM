@@ -6,9 +6,9 @@
     <div class="text-center border-b pb-6">
 
         @if($school && $school->logo)
-            <img src="{{ $setting->logo }}"
-                class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 object-cover">
-        @endif
+    <img src="{{ $school->logo }}"
+         class="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 object-contain">
+@endif
 
         <h1 class="text-xl sm:text-3xl font-bold">
             {{ $school->school_name }}
