@@ -40,9 +40,7 @@ class SchoolSettingController extends Controller
 
         // Logo
         if ($request->hasFile('logo')) {
-            $result = Cloudinary::getCloudinary()
-    ->uploadApi()
-    ->upload(
+            $result = Cloudinary::uploadApi()->upload(
         $request->file('logo')->getRealPath(),
         [
             'folder' => 'school-management/logos',
@@ -55,23 +53,22 @@ $validated['logo'] = $result['secure_url'];
         // Principal Signature
         if ($request->hasFile('principal_signature')) {
 
-    $result = Cloudinary::getCloudinary()
-        ->uploadApi()
-        ->upload(
-            $request->file('principal_signature')->getRealPath(),
-            [
-                'folder' => 'school-management/signatures',
-            ]
-        );
+    $result = Cloudinary::uploadApi()->upload(
+    $request->file('principal_signature')->getRealPath(),
+    [
+        'folder' => 'school-management/signatures',
+    ]
+);
 
-    $validated['principal_signature'] = $result['secure_url'];
+$validated['principal_signature'] = $result['secure_url'];
+
+    
 }
 
         // School Stamp
         if ($request->hasFile('school_stamp')) {
 
-    $result = Cloudinary::getCloudinary()
-        ->uploadApi()
+    $result = Cloudinary::uploadApi()
         ->upload(
             $request->file('school_stamp')->getRealPath(),
             [
@@ -117,8 +114,7 @@ $validated['logo'] = $result['secure_url'];
         // Logo
         if ($request->hasFile('logo')) {
 
-    $result = Cloudinary::getCloudinary()
-        ->uploadApi()
+    $result = Cloudinary::uploadApi()
         ->upload(
             $request->file('logo')->getRealPath(),
             [
@@ -132,8 +128,7 @@ $validated['logo'] = $result['secure_url'];
         // Principal Signature
         if ($request->hasFile('principal_signature')) {
 
-    $result = Cloudinary::getCloudinary()
-        ->uploadApi()
+    $result = Cloudinary::uploadApi()
         ->upload(
             $request->file('principal_signature')->getRealPath(),
             [
@@ -147,8 +142,7 @@ $validated['logo'] = $result['secure_url'];
         // School Stamp
         if ($request->hasFile('school_stamp')) {
 
-    $result = Cloudinary::getCloudinary()
-        ->uploadApi()
+    $result = Cloudinary::uploadApi()
         ->upload(
             $request->file('school_stamp')->getRealPath(),
             [
