@@ -109,14 +109,21 @@
                            value="{{ old('current_session') }}"
                            class="border rounded p-3">
 
-                    <select name="current_term"
-                            class="border rounded p-3">
+                    <select name="current_term" class="border rounded p-3">
 
-                        <option value="First">First</option>
-                        <option value="Second">Second</option>
-                        <option value="Third">Third</option>
+    <option value="First Term" {{ old('current_term') == 'First Term' ? 'selected' : '' }}>
+        First Term
+    </option>
 
-                    </select>
+    <option value="Second Term" {{ old('current_term') == 'Second Term' ? 'selected' : '' }}>
+        Second Term
+    </option>
+
+    <option value="Third Term" {{ old('current_term') == 'Third Term' ? 'selected' : '' }}>
+        Third Term
+    </option>
+
+</select>
 
                 </div>
 

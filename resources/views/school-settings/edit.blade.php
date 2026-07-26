@@ -152,26 +152,24 @@
                     <div>
                         <label class="block mb-2 font-medium">Current Term</label>
 
-                        <select
-                            name="current_term"
-                            class="w-full border rounded-lg p-3">
+                        <select name="current_term" class="border rounded p-3">
 
-                            <option value="First"
-                                {{ old('current_term', $setting->current_term) == 'First' ? 'selected' : '' }}>
-                                First
-                            </option>
+    <option value="First Term"
+        {{ old('current_term', $setting->current_term) == 'First Term' ? 'selected' : '' }}>
+        First Term
+    </option>
 
-                            <option value="Second"
-                                {{ old('current_term', $setting->current_term) == 'Second' ? 'selected' : '' }}>
-                                Second
-                            </option>
+    <option value="Second Term"
+        {{ old('current_term', $setting->current_term) == 'Second Term' ? 'selected' : '' }}>
+        Second Term
+    </option>
 
-                            <option value="Third"
-                                {{ old('current_term', $setting->current_term) == 'Third' ? 'selected' : '' }}>
-                                Third
-                            </option>
+    <option value="Third Term"
+        {{ old('current_term', $setting->current_term) == 'Third Term' ? 'selected' : '' }}>
+        Third Term
+    </option>
 
-                        </select>
+</select>
                     </div>
 
                 </div>
