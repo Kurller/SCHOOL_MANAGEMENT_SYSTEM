@@ -2,18 +2,18 @@
 
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="text-2xl font-bold text-violet-700">
+            <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
                 School Settings
             </h2>
 
             @if($setting)
                 <a href="{{ route('school-settings.edit', $setting->id) }}"
-                   class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow">
+                   class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-5 py-2 rounded-lg shadow transition transform hover:scale-105">
                     ✏️ Edit Settings
                 </a>
             @else
                 <a href="{{ route('school-settings.create') }}"
-                   class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg shadow">
+                   class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-5 py-2 rounded-lg shadow transition transform hover:scale-105">
                     ➕ Add Settings
                 </a>
             @endif
@@ -30,7 +30,7 @@
 
         @if($setting)
 
-            <div class="bg-white shadow-xl rounded-xl overflow-hidden">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden transition hover:shadow-2xl">
 
                 <div class="p-8">
 
@@ -44,7 +44,7 @@
 
                             @if($setting->logo)
                                 <img src="{{ asset('storage/'.$setting->logo) }}"
-                                     class="w-36 h-36 object-contain border rounded-lg mx-auto">
+                                     class="w-36 h-36 object-contain border rounded-lg mx-auto transition hover:scale-105">
                             @else
                                 <p class="text-gray-400">No Logo Uploaded</p>
                             @endif
@@ -57,7 +57,7 @@
 
                             @if($setting->principal_signature)
                                 <img src="{{ asset('storage/'.$setting->principal_signature) }}"
-                                     class="w-36 h-24 object-contain border rounded-lg mx-auto">
+                                     class="w-36 h-24 object-contain border rounded-lg mx-auto transition hover:scale-105">
                             @else
                                 <p class="text-gray-400">No Signature Uploaded</p>
                             @endif
@@ -70,7 +70,7 @@
 
                             @if($setting->school_stamp)
                                 <img src="{{ asset('storage/'.$setting->school_stamp) }}"
-                                     class="w-36 h-36 object-contain border rounded-lg mx-auto">
+                                     class="w-36 h-36 object-contain border rounded-lg mx-auto transition hover:scale-105">
                             @else
                                 <p class="text-gray-400">No Stamp Uploaded</p>
                             @endif
@@ -130,7 +130,7 @@
 
                     <div class="mt-10">
                         <a href="{{ route('school-settings.edit', $setting->id) }}"
-                           class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow">
+                           class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-3 rounded-lg shadow transition transform hover:scale-105">
                             Edit Settings
                         </a>
                     </div>
@@ -141,7 +141,7 @@
 
         @else
 
-            <div class="bg-yellow-100 border border-yellow-300 rounded-xl p-8 text-center">
+            <div class="bg-gradient-to-r from-yellow-100 to-orange-100 border border-yellow-300 rounded-2xl p-8 text-center shadow-xl transition hover:shadow-2xl">
 
                 <h3 class="text-xl font-semibold mb-4">
                     No School Settings Found
@@ -152,7 +152,7 @@
                 </p>
 
                 <a href="{{ route('school-settings.create') }}"
-                   class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
+                   class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white px-6 py-3 rounded-lg shadow transition transform hover:scale-105">
                     ➕ Create School Settings
                 </a>
 

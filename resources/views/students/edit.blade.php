@@ -1,6 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl">Edit Student</h2>
+        <h2 class="font-semibold text-xl text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
+            Edit Student
+        </h2>
     </x-slot>
 
     <div class="py-6">
@@ -25,7 +27,9 @@
 
                 @php($button = 'Update Student')
 
-                @include('students._form')
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
+                    @include('students._form')
+                </div>
 
             </form>
 

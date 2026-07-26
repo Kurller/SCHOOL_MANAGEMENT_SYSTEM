@@ -1,237 +1,239 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="text-2xl font-bold text-violet-700">
+        <h2 class="font-semibold text-xl text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
             Student Report Card
         </h2>
     </x-slot>
 
-    <div class="max-w-6xl mx-auto py-8">
+    <div class="py-6 min-h-screen bg-gradient-to-br from-violet-100 via-fuchsia-100 to-pink-100">
+        <div class="max-w-6xl mx-auto">
 
-        <div class="bg-white shadow-xl rounded-xl overflow-hidden">
+            <div class="bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden border border-gray-100">
 
-            <!-- School Header -->
-            <div class="bg-violet-700 text-white p-8 text-center">
+                <!-- School Header -->
+                <div class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 text-white p-8 text-center">
 
-                @if($school && $school->logo)
-                    <img src="{{ asset('storage/'.$school->logo) }}"
-                         class="w-24 h-24 mx-auto mb-4 object-contain">
-                @endif
+                    @if($school && $school->logo)
+                        <img src="{{ asset('storage/'.$school->logo) }}"
+                             class="w-24 h-24 mx-auto mb-4 object-contain">
+                    @endif
 
-                <h1 class="text-3xl font-bold">
-                    {{ $school->school_name }}
-                </h1>
+                    <h1 class="text-3xl font-bold">
+                        {{ $school->school_name }}
+                    </h1>
 
-                <p>{{ $school->motto }}</p>
+                    <p>{{ $school->motto }}</p>
 
-                <p>{{ $school->address }}</p>
+                    <p>{{ $school->address }}</p>
 
-                <p>
-                    {{ $school->phone }}
-                    |
-                    {{ $school->email }}
-                </p>
-
-            </div>
-
-            <div class="p-8">
-
-                <!-- Student Information -->
-
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-
-                    <div>
-                        <strong>Student Name:</strong><br>
-                        {{ $student->first_name }}
-                        {{ $student->last_name }}
-                    </div>
-
-                    <div>
-                        <strong>Admission No:</strong><br>
-                        {{ $student->admission_number }}
-                    </div>
-
-                    <div>
-                        <strong>Session:</strong><br>
-                        {{ $school->current_session }}
-                    </div>
-
-                    <div>
-                        <strong>Term:</strong><br>
-                        {{ $school->current_term }}
-                    </div>
+                    <p>
+                        {{ $school->phone }}
+                        |
+                        {{ $school->email }}
+                    </p>
 
                 </div>
 
-                <!-- Results -->
+                <div class="p-8">
 
-                <table class="w-full border-collapse border">
+                    <!-- Student Information -->
 
-                    <thead class="bg-violet-600 text-white">
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
 
-                        <tr>
+                        <div>
+                            <strong>Student Name:</strong><br>
+                            {{ $student->first_name }}
+                            {{ $student->last_name }}
+                        </div>
 
-                            <th class="border p-3">Subject</th>
+                        <div>
+                            <strong>Admission No:</strong><br>
+                            {{ $student->admission_number }}
+                        </div>
 
-                            <th class="border p-3">CA</th>
+                        <div>
+                            <strong>Session:</strong><br>
+                            {{ $school->current_session }}
+                        </div>
 
-                            <th class="border p-3">Exam</th>
+                        <div>
+                            <strong>Term:</strong><br>
+                            {{ $school->current_term }}
+                        </div>
 
-                            <th class="border p-3">Total</th>
+                    </div>
 
-                            <th class="border p-3">Grade</th>
+                    <!-- Results -->
 
-                            <th class="border p-3">Remark</th>
+                    <table class="w-full border-collapse border">
 
-                        </tr>
+                        <thead class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 text-white">
 
-                    </thead>
+                            <tr>
 
-                    <tbody>
+                                <th class="border p-3">Subject</th>
 
-                        @foreach($results as $result)
+                                <th class="border p-3">CA</th>
 
-                        <tr>
+                                <th class="border p-3">Exam</th>
 
-                            <td class="border p-3">
-                                {{ $result->subject->subject_name }}
-                            </td>
+                                <th class="border p-3">Total</th>
 
-                            <td class="border p-3 text-center">
-                                {{ $result->ca_score }}
-                            </td>
+                                <th class="border p-3">Grade</th>
 
-                            <td class="border p-3 text-center">
-                                {{ $result->exam_score }}
-                            </td>
+                                <th class="border p-3">Remark</th>
 
-                            <td class="border p-3 text-center font-bold">
-                                {{ $result->total_score }}
-                            </td>
+                            </tr>
 
-                            <td class="border p-3 text-center">
-                                {{ $result->grade }}
-                            </td>
+                        </thead>
 
-                            <td class="border p-3 text-center">
-                                {{ $result->remark }}
-                            </td>
+                        <tbody>
 
-                        </tr>
+                            @foreach($results as $result)
 
-                        @endforeach
+                            <tr class="hover:bg-fuchsia-50 transition-colors">
 
-                    </tbody>
+                                <td class="border p-3">
+                                    {{ $result->subject->subject_name }}
+                                </td>
 
-                </table>
+                                <td class="border p-3 text-center">
+                                    {{ $result->ca_score }}
+                                </td>
 
-                <!-- Summary -->
+                                <td class="border p-3 text-center">
+                                    {{ $result->exam_score }}
+                                </td>
 
-                <div class="mt-8 flex justify-end">
+                                <td class="border p-3 text-center font-bold">
+                                    {{ $result->total_score }}
+                                </td>
 
-                    <table>
+                                <td class="border p-3 text-center">
+                                    {{ $result->grade }}
+                                </td>
 
-                        <tr>
+                                <td class="border p-3 text-center">
+                                    {{ $result->remark }}
+                                </td>
 
-                            <td class="font-bold pr-6">
-                                Total Score
-                            </td>
+                            </tr>
 
-                            <td>
-                                {{ number_format($total,2) }}
-                            </td>
+                            @endforeach
 
-                        </tr>
-
-                        <tr>
-
-                            <td class="font-bold pr-6">
-                                Average Score
-                            </td>
-
-                            <td>
-                                {{ number_format($average,2) }}
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <td class="font-bold pr-6">
-                                Position
-                            </td>
-
-                            <td>
-                                {{ $position }}
-                            </td>
-
-                        </tr>
+                        </tbody>
 
                     </table>
 
-                </div>
+                    <!-- Summary -->
 
-                <!-- Signature -->
+                    <div class="mt-8 flex justify-end">
 
-                <div class="grid md:grid-cols-2 gap-10 mt-16">
+                        <table>
 
-                    <div class="text-center">
+                            <tr>
 
-                        @if($school && $school->principal_signature)
+                                <td class="font-bold pr-6">
+                                    Total Score
+                                </td>
 
-                            <img src="{{ asset('storage/'.$school->principal_signature) }}"
-                                 class="h-20 mx-auto">
+                                <td>
+                                    {{ number_format($total,2) }}
+                                </td>
 
-                        @endif
+                            </tr>
 
-                        <hr>
+                            <tr>
 
-                        Principal Signature
+                                <td class="font-bold pr-6">
+                                    Average Score
+                                </td>
+
+                                <td>
+                                    {{ number_format($average,2) }}
+                                </td>
+
+                            </tr>
+
+                            <tr>
+
+                                <td class="font-bold pr-6">
+                                    Position
+                                </td>
+
+                                <td>
+                                    {{ $position }}
+                                </td>
+
+                            </tr>
+
+                        </table>
 
                     </div>
 
-                    <div class="text-center">
+                    <!-- Signature -->
 
-                        @if($school && $school->school_stamp)
+                    <div class="grid md:grid-cols-2 gap-10 mt-16">
 
-                            <img src="{{ asset('storage/'.$school->school_stamp) }}"
-                                 class="h-24 mx-auto">
+                        <div class="text-center">
 
-                        @endif
+                            @if($school && $school->principal_signature)
 
-                        <hr>
+                                <img src="{{ asset('storage/'.$school->principal_signature) }}"
+                                     class="h-20 mx-auto">
 
-                        School Stamp
+                            @endif
+
+                            <hr>
+
+                            Principal Signature
+
+                        </div>
+
+                        <div class="text-center">
+
+                            @if($school && $school->school_stamp)
+
+                                <img src="{{ asset('storage/'.$school->school_stamp) }}"
+                                     class="h-24 mx-auto">
+
+                            @endif
+
+                            <hr>
+
+                            School Stamp
+
+                        </div>
 
                     </div>
 
-                </div>
+                    <!-- Buttons -->
 
-                <!-- Buttons -->
+                    <div class="mt-10 flex justify-between">
 
-                <div class="mt-10 flex justify-between">
+                        <a href="{{ route('results.index') }}"
+                           class="bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
 
-                    <a href="{{ route('results.index') }}"
-                       class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded">
+                            Back
 
-                        Back
+                        </a>
 
-                    </a>
+                        <button
+                            onclick="window.print()"
+                            class="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-6 py-3 rounded-lg font-medium transition-colors shadow-lg">
 
-                    <button
-                        onclick="window.print()"
-                        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded">
+                            Print Report Card
 
-                        Print Report Card
+                        </button>
 
-                    </button>
+                    </div>
 
                 </div>
 
             </div>
 
         </div>
-
     </div>
 
 </x-app-layout>

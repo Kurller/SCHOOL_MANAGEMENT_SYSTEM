@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-violet-400 dark:to-fuchsia-400 leading-tight">
             {{ __('AI Assistant') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden transition hover:shadow-2xl"
                  x-data="chatAssistant()"
                  x-init="init()"
                  @keydown.window.prevent.cmd.enter="send()"
@@ -18,7 +18,7 @@
                     <template x-for="(message, index) in messages" :key="index">
                         <div :class="message.role === 'user' ? 'text-right' : 'text-left'">
                             <div :class="message.role === 'user'
-                                ? 'inline-block bg-indigo-600 text-white rounded-2xl px-4 py-2 max-w-[80%] text-left whitespace-pre-wrap'
+                                ? 'inline-block bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-2xl px-4 py-2 max-w-[80%] text-left whitespace-pre-wrap shadow-lg'
                                 : 'inline-block bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-2xl px-4 py-2 max-w-[80%] text-left whitespace-pre-wrap'"
                                 x-text="message.content"></div>
                         </div>
@@ -39,11 +39,11 @@
                             @keydown.enter.prevent="send()"
                             rows="1"
                             placeholder="Ask about students, classes, attendance…"
-                            class="flex-1 rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 resize-none"></textarea>
+                            class="flex-1 rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 shadow-sm focus:border-violet-500 focus:ring-2 focus:ring-violet-500 resize-none"></textarea>
 
                         <button type="submit"
                             :disabled="loading || !input.trim()"
-                            class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition">
+                            class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed transition transform hover:scale-105 shadow">
                             Send
                         </button>
                     </form>

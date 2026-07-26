@@ -1,7 +1,7 @@
 <x-app-layout>
 
 <x-slot name="header">
-    <h2 class="text-2xl font-bold text-blue-700">
+    <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
         Parent Dashboard
     </h2>
 </x-slot>
@@ -11,23 +11,23 @@
     <!-- Dashboard Cards -->
     <div class="grid md:grid-cols-3 gap-6 mb-8">
 
-        <div class="bg-white shadow rounded-xl p-6">
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 transition hover:shadow-2xl hover:scale-105">
             <h3 class="text-gray-500">Children</h3>
-            <p class="text-4xl font-bold text-blue-600">
+            <p class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
                 {{ $students->count() }}
             </p>
         </div>
 
-        <div class="bg-white shadow rounded-xl p-6">
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 transition hover:shadow-2xl hover:scale-105">
             <h3 class="text-gray-500">Results</h3>
-            <p class="text-4xl font-bold text-green-600">
+            <p class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-emerald-600">
                 {{ $results->count() }}
             </p>
         </div>
 
-        <div class="bg-white shadow rounded-xl p-6">
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 transition hover:shadow-2xl hover:scale-105">
             <h3 class="text-gray-500">Fee Records</h3>
-            <p class="text-4xl font-bold text-red-600">
+            <p class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-600 to-rose-600">
                 {{ $fees->count() }}
             </p>
         </div>
@@ -36,9 +36,9 @@
 
     <!-- My Children -->
 
-    <div class="bg-white shadow rounded-xl p-6 mb-8">
+    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-8 transition hover:shadow-2xl">
 
-        <h3 class="text-xl font-bold mb-4">
+        <h3 class="text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
             My Children
         </h3>
 
@@ -63,12 +63,12 @@
                 <div class="mt-4 flex gap-3">
 
                     <a href="{{ route('parent.results.index') }}"
-                       class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">
+                       class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-2 rounded-lg shadow transition transform hover:scale-105">
                         View Results
                     </a>
 
                     <a href="{{ route('parent.report-card', $student->id) }}"
-                       class="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg">
+                       class="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white px-4 py-2 rounded-lg shadow transition transform hover:scale-105">
                         View Report Card
                     </a>
 
@@ -88,9 +88,9 @@
 
     <!-- Recent Results -->
 
-    <div class="bg-white shadow rounded-xl p-6 mb-8">
+    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-8 transition hover:shadow-2xl">
 
-        <h3 class="text-xl font-bold mb-4">
+        <h3 class="text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
             Recent Results
         </h3>
 
@@ -152,9 +152,9 @@
 
     <!-- Fee Records -->
 
-    <div class="bg-white shadow rounded-xl p-6">
+    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 transition hover:shadow-2xl">
 
-        <h3 class="text-xl font-bold mb-4">
+        <h3 class="text-xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
             Fee Records
         </h3>
 

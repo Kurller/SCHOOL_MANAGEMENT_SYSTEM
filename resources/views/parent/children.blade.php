@@ -1,18 +1,18 @@
 <x-app-layout>
 
     <x-slot name="header">
-        <h2 class="text-2xl font-bold text-violet-700">
+        <h2 class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
             My Children
         </h2>
     </x-slot>
 
     <div class="max-w-7xl mx-auto py-8">
 
-        <div class="bg-white rounded-xl shadow overflow-x-auto">
+        <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-x-auto transition hover:shadow-2xl">
 
             <table class="min-w-full">
 
-                <thead class="bg-violet-700 text-white">
+                <thead class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 text-white">
 
                     <tr>
                         <th class="px-4 py-3 text-left">Admission No</th>
@@ -26,7 +26,7 @@
 
                     @forelse($students as $student)
 
-                        <tr class="border-b hover:bg-gray-50">
+                        <tr class="border-b hover:bg-gray-50 transition">
 
                             <td class="px-4 py-3">
                                 {{ $student->admission_number }}
@@ -40,7 +40,7 @@
                             <td class="px-4 py-3 text-center">
 
                                 <a href="{{ route('parent.report-card', ['student' => $student->id]) }}"
-                                   class="inline-block bg-violet-600 hover:bg-violet-700 text-white px-4 py-2 rounded-lg">
+                                   class="inline-block bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white px-4 py-2 rounded-lg shadow transition transform hover:scale-105">
                                     View Report Card
                                 </a>
 

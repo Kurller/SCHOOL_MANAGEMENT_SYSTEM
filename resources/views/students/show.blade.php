@@ -1,17 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-white leading-tight">
+        <h2 class="font-semibold text-2xl text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 leading-tight">
             Student Details
         </h2>
     </x-slot>
 
-    <div class="py-8 bg-gradient-to-br from-blue-100 via-indigo-100 to-purple-100 min-h-screen">
+    <div class="py-8 bg-gradient-to-br from-violet-100 via-fuchsia-100 to-pink-100 min-h-screen">
 
         <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
 
-            <div class="bg-white rounded-xl shadow-xl overflow-hidden">
+            <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden transition hover:shadow-2xl">
 
-                <div class="bg-blue-700 text-white px-6 py-4">
+                <div class="bg-gradient-to-r from-violet-600 via-fuchsia-600 to-pink-600 text-white px-6 py-4">
                     <h3 class="text-2xl font-bold">
                         {{ $student->first_name }} {{ $student->last_name }}
                     </h3>
@@ -26,10 +26,10 @@
 
                             @if($student->photo)
                                 <img src="{{ asset('storage/'.$student->photo) }}"
-                                     class="w-56 h-56 rounded-lg border shadow object-cover mx-auto">
+                                     class="w-56 h-56 rounded-lg border shadow object-cover mx-auto transition hover:scale-105">
                             @else
                                 <img src="https://via.placeholder.com/220x220?text=No+Photo"
-                                     class="w-56 h-56 rounded-lg border shadow mx-auto">
+                                     class="w-56 h-56 rounded-lg border shadow mx-auto transition hover:scale-105">
                             @endif
 
                         </div>
@@ -108,12 +108,12 @@
                     <div class="mt-8 flex gap-3">
 
                         <a href="{{ route('students.edit',$student) }}"
-                           class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded">
+                           class="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white px-5 py-2 rounded-lg shadow transition transform hover:scale-105">
                             Edit Student
                         </a>
 
                         <a href="{{ route('students.index') }}"
-                           class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded">
+                           class="bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-700 hover:to-fuchsia-700 text-white px-5 py-2 rounded-lg shadow transition transform hover:scale-105">
                             Back to Students
                         </a>
 

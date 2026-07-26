@@ -1,6 +1,6 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+        <h2 class="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600">
             {{ __('Delete Account') }}
         </h2>
 
@@ -34,7 +34,7 @@
                     id="password"
                     name="password"
                     type="password"
-                    class="mt-1 block w-3/4"
+                    class="mt-1 block w-3/4 focus:ring-2 focus:ring-violet-500 transition-shadow duration-300"
                     placeholder="{{ __('Password') }}"
                 />
 
