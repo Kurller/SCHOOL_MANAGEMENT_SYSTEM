@@ -1,0 +1,36 @@
+services:
+
+  - type: web
+    name: school-management
+    runtime: docker
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_URL
+        value: https://school-management.onrender.com
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: SANCTUM_STATEFUL_DOMAINS
+        value: school-management.onrender.com
+      - key: SPA_URL
+        value: https://school-management.onrender.com
+
+  - type: database
+    name: school-db
+    engine: postgres
+    version: "16"
+    databaseName: school_management
+    user: render
+    password: secret
+    plan: free

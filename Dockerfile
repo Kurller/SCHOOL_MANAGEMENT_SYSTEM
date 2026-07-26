@@ -28,6 +28,8 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
+    libpq-dev \
+    nginx \
     default-mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
@@ -38,6 +40,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
+    pdo_pgsql \
     mbstring \
     zip \
     exif \
@@ -63,6 +66,12 @@ RUN composer install \
 # Copy built frontend assets
 COPY --from=frontend /app/public/build ./public/build
 
+# Configure Nginx
+RUN rm -f /etc/nginx/sites-enabled/default || true && \
+    rm -f /etc/nginx/conf.d/default.conf || true
+
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Create Laravel directories
 RUN mkdir -p \
     storage/framework/cache \
@@ -75,7 +84,8 @@ RUN mkdir -p \
 RUN chown -R www-data:www-data storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache
 
-# Expose PHP-FPM
-EXPOSE 9000
+# Expose port 80 for HTTP
+EXPOSE 80
 
-CMD ["php-fpm"]
+# Start PHP-FPM and Nginx
+CMD php-fpm & nginx -g "daemon off;"
