@@ -40,33 +40,47 @@ class SchoolSettingController extends Controller
 
         // Logo
         if ($request->hasFile('logo')) {
-            $upload = Cloudinary::upload(
-                $request->file('logo')->getRealPath(),
-                ['folder' => 'school-management/logos']
-            );
+            $result = Cloudinary::getCloudinary()
+    ->uploadApi()
+    ->upload(
+        $request->file('logo')->getRealPath(),
+        [
+            'folder' => 'school-management/logos',
+        ]
+    );
 
-            $validated['logo'] = $upload->getSecurePath();
+$validated['logo'] = $result['secure_url'];
         }
 
         // Principal Signature
         if ($request->hasFile('principal_signature')) {
-            $upload = Cloudinary::upload(
-                $request->file('principal_signature')->getRealPath(),
-                ['folder' => 'school-management/signatures']
-            );
 
-            $validated['principal_signature'] = $upload->getSecurePath();
-        }
+    $result = Cloudinary::getCloudinary()
+        ->uploadApi()
+        ->upload(
+            $request->file('principal_signature')->getRealPath(),
+            [
+                'folder' => 'school-management/signatures',
+            ]
+        );
+
+    $validated['principal_signature'] = $result['secure_url'];
+}
 
         // School Stamp
         if ($request->hasFile('school_stamp')) {
-            $upload = Cloudinary::upload(
-                $request->file('school_stamp')->getRealPath(),
-                ['folder' => 'school-management/stamps']
-            );
 
-            $validated['school_stamp'] = $upload->getSecurePath();
-        }
+    $result = Cloudinary::getCloudinary()
+        ->uploadApi()
+        ->upload(
+            $request->file('school_stamp')->getRealPath(),
+            [
+                'folder' => 'school-management/stamps',
+            ]
+        );
+
+    $validated['school_stamp'] = $result['secure_url'];
+}
 
         SchoolSetting::create($validated);
 
@@ -102,33 +116,48 @@ class SchoolSettingController extends Controller
 
         // Logo
         if ($request->hasFile('logo')) {
-            $upload = Cloudinary::upload(
-                $request->file('logo')->getRealPath(),
-                ['folder' => 'school-management/logos']
-            );
 
-            $validated['logo'] = $upload->getSecurePath();
-        }
+    $result = Cloudinary::getCloudinary()
+        ->uploadApi()
+        ->upload(
+            $request->file('logo')->getRealPath(),
+            [
+                'folder' => 'school-management/logos',
+            ]
+        );
+
+    $validated['logo'] = $result['secure_url'];
+}
 
         // Principal Signature
         if ($request->hasFile('principal_signature')) {
-            $upload = Cloudinary::upload(
-                $request->file('principal_signature')->getRealPath(),
-                ['folder' => 'school-management/signatures']
-            );
 
-            $validated['principal_signature'] = $upload->getSecurePath();
-        }
+    $result = Cloudinary::getCloudinary()
+        ->uploadApi()
+        ->upload(
+            $request->file('principal_signature')->getRealPath(),
+            [
+                'folder' => 'school-management/signatures',
+            ]
+        );
+
+    $validated['principal_signature'] = $result['secure_url'];
+}
 
         // School Stamp
         if ($request->hasFile('school_stamp')) {
-            $upload = Cloudinary::upload(
-                $request->file('school_stamp')->getRealPath(),
-                ['folder' => 'school-management/stamps']
-            );
 
-            $validated['school_stamp'] = $upload->getSecurePath();
-        }
+    $result = Cloudinary::getCloudinary()
+        ->uploadApi()
+        ->upload(
+            $request->file('school_stamp')->getRealPath(),
+            [
+                'folder' => 'school-management/stamps',
+            ]
+        );
+
+    $validated['school_stamp'] = $result['secure_url'];
+}
 
         $school_setting->update($validated);
 
