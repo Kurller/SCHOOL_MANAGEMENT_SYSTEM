@@ -43,8 +43,8 @@
                             </h3>
 
                             @if($setting->logo)
-                                <img src="{{ asset('storage/'.$setting->logo) }}"
-                                     class="w-36 h-36 object-contain border rounded-lg mx-auto transition hover:scale-105">
+                                <img src="{{ $setting->logo }}"
+     class="w-36 h-36 object-contain border rounded-lg mx-auto transition hover:scale-105">
                             @else
                                 <p class="text-gray-400">No Logo Uploaded</p>
                             @endif
@@ -56,8 +56,8 @@
                             </h3>
 
                             @if($setting->principal_signature)
-                                <img src="{{ asset('storage/'.$setting->principal_signature) }}"
-                                     class="w-36 h-24 object-contain border rounded-lg mx-auto transition hover:scale-105">
+                                <img src="{{ $setting->logo }}"
+     class="w-36 h-36 object-contain border rounded-lg mx-auto transition hover:scale-105">
                             @else
                                 <p class="text-gray-400">No Signature Uploaded</p>
                             @endif
@@ -69,8 +69,8 @@
                             </h3>
 
                             @if($setting->school_stamp)
-                                <img src="{{ asset('storage/'.$setting->school_stamp) }}"
-                                     class="w-36 h-36 object-contain border rounded-lg mx-auto transition hover:scale-105">
+                                <img src="{{ $setting->logo }}"
+     class="w-36 h-36 object-contain border rounded-lg mx-auto transition hover:scale-105">
                             @else
                                 <p class="text-gray-400">No Stamp Uploaded</p>
                             @endif
