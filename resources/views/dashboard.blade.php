@@ -121,54 +121,60 @@
 </div>
 </div>
 <script>
-document.getElementById('send-btn').addEventListener('click', function () {
+document.addEventListener("DOMContentLoaded", function () {
 
-    const message = document.getElementById('message').value;
+    const sendBtn = document.getElementById("send-btn");
+    const messageInput = document.getElementById("message");
+    const chatBox = document.getElementById("chat-box");
 
-    if (!message.trim()) return;
+    console.log("Script Loaded");
 
-    const chatBox = document.getElementById('chat-box');
+    sendBtn.addEventListener("click", function () {
 
-    chatBox.innerHTML += `
-        <div class="mb-2">
-            <strong>You:</strong> ${message}
-        </div>
-    `;
+        console.log("Button Clicked");
 
-    fetch("{{ route('chat.ask') }}", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
-    },
-    body: JSON.stringify({
-        message: message
-    })
-})
-.then(async res => {
+        const message = messageInput.value;
 
-    console.log("Status:", res.status);
+        if (!message.trim()) return;
 
-    const data = await res.json();
+        chatBox.innerHTML += `
+            <div><strong>You:</strong> ${message}</div>
+        `;
 
-    console.log(data);
+        fetch("{{ route('chat.ask') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+            },
+            body: JSON.stringify({
+                message: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
 
-    chatBox.innerHTML += `
-        <div class="mb-3 text-primary">
-            <strong>AI:</strong> ${data.reply}
-        </div>
-    `;
+            console.log(data);
 
-})
-.catch(error => {
+            chatBox.innerHTML += `
+                <div><strong>AI:</strong> ${data.reply}</div>
+            `;
 
-    console.error(error);
+            messageInput.value = "";
 
-    chatBox.innerHTML += `
-        <div class="text-danger">
-            ${error}
-        </div>
-    `;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        })
+        .catch(error => {
+
+            console.error(error);
+
+            chatBox.innerHTML += `
+                <div style="color:red">${error}</div>
+            `;
+        });
+
+    });
+
 });
 </script>
 </x-app-layout>
