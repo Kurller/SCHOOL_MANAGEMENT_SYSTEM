@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+
+class ChatController extends Controller
+{
+    public function ask(Request $request)
+    {
+        $request->validate([
+            'message' => 'required|string'
+        ]);
+
+        $response = Http::timeout(60)
+            ->withHeaders([
+                'Authorization' => 'Bearer ' . env('OPENROUTER_API_KEY'),
+                'Content-Type' => 'application/json',
+                'HTTP-Referer' => 'http://127.0.0.1:8000',
+                'X-Title' => 'School AI Assistant',
+            ])
+            ->post('https://openrouter.ai/api/v1/chat/completions', [
+
+                'model' => 'qwen/qwen3.7-flash',
+
+                'messages' => [
+                    [
+                        'role' => 'system',
+                        'content' => 'You are a helpful AI assistant for a school management system. Answer questions about students, teachers, fees, results, attendance, and school operations.'
+                    ],
+                    [
+                        'role' => 'user',
+                        'content' => $request->message
+                    ]
+                ]
+
+            ]);
+
+
+        $data = $response->json();
+
+
+        if (!$response->successful()) {
+
+            return response()->json([
+                'success' => false,
+                'error' => $data['error']['message'] ?? 'Unknown error',
+                'details' => $data
+            ], $response->status());
+
+        }
+
+
+        return response()->json([
+            'success' => true,
+            'reply' => $data['choices'][0]['message']['content'] ?? 'No response'
+        ]);
+    }
+}

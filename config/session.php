@@ -3,7 +3,10 @@
 use Illuminate\Support\Str;
 
 return [
-
+'openrouter' => [
+    'key' => env('OPENROUTER_API_KEY'),
+    'url' => env('OPENROUTER_URL'),
+],
     /*
     |--------------------------------------------------------------------------
     | Default Session Driver

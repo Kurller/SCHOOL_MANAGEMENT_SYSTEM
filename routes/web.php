@@ -17,6 +17,7 @@ use App\Http\Controllers\FeeController;
 use App\Http\Controllers\SchoolSettingController;
 use App\Http\Controllers\ReportCardController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ChatController;
 
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\ParentDashboardController;
@@ -184,7 +185,18 @@ Route::middleware(['auth', 'role:Parent'])
 
         Route::get('/report-card/{student}', [ParentController::class, 'reportCard'])
             ->name('report-card');
+        
 
     });
+Route::middleware(['auth'])->group(function () {
+
+    Route::get('/chat', function () {
+        return view('chat.index');
+    })->name('chat.index');
+
+    Route::post('/chat', [ChatController::class, 'ask'])
+        ->name('chat.ask');
+
+});
 
 require __DIR__.'/auth.php';

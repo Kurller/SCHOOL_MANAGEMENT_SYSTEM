@@ -91,7 +91,88 @@
         </div>
 
     </div>
+<div class="card mt-4">
+    <div class="card-header bg-primary text-white">
+        🤖 School AI Assistant
+    </div>
 
+    <div class="card-body">
+
+        <div id="chat-box" style="height:300px; overflow-y:auto; border:1px solid #ddd; padding:10px;">
+        </div>
+
+        <div class="mt-3 d-flex">
+            <input
+                type="text"
+                id="message"
+                class="form-control"
+                placeholder="Ask anything about the school...">
+
+            <button
+                class="btn btn-primary ms-2"
+                id="send-btn">
+
+                Send
+
+            </button>
+        </div>
+
+    </div>
 </div>
+</div>
+<script>
+document.getElementById('send-btn').addEventListener('click', function () {
 
+    const message = document.getElementById('message').value;
+
+    if (!message.trim()) return;
+
+    const chatBox = document.getElementById('chat-box');
+
+    chatBox.innerHTML += `
+        <div class="mb-2">
+            <strong>You:</strong> ${message}
+        </div>
+    `;
+
+    fetch("{{ route('chat.ask') }}", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+        },
+
+        body: JSON.stringify({
+            message: message
+        })
+
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        chatBox.innerHTML += `
+            <div class="mb-3 text-primary">
+                <strong>AI:</strong> ${data.reply}
+            </div>
+        `;
+
+        document.getElementById('message').value = "";
+
+        chatBox.scrollTop = chatBox.scrollHeight;
+
+    })
+    .catch(() => {
+
+        chatBox.innerHTML += `
+            <div class="text-danger">
+                Failed to contact AI.
+            </div>
+        `;
+
+    });
+
+});
+</script>
 </x-app-layout>
