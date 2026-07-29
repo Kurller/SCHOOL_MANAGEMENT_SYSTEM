@@ -136,43 +136,39 @@ document.getElementById('send-btn').addEventListener('click', function () {
     `;
 
     fetch("{{ route('chat.ask') }}", {
-
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
-        },
-
-        body: JSON.stringify({
-            message: message
-        })
-
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').content
+    },
+    body: JSON.stringify({
+        message: message
     })
-    .then(res => res.json())
-    .then(data => {
+})
+.then(async res => {
 
-        chatBox.innerHTML += `
-            <div class="mb-3 text-primary">
-                <strong>AI:</strong> ${data.reply}
-            </div>
-        `;
+    console.log("Status:", res.status);
 
-        document.getElementById('message').value = "";
+    const data = await res.json();
 
-        chatBox.scrollTop = chatBox.scrollHeight;
+    console.log(data);
 
-    })
-    .catch(() => {
+    chatBox.innerHTML += `
+        <div class="mb-3 text-primary">
+            <strong>AI:</strong> ${data.reply}
+        </div>
+    `;
 
-        chatBox.innerHTML += `
-            <div class="text-danger">
-                Failed to contact AI.
-            </div>
-        `;
+})
+.catch(error => {
 
-    });
+    console.error(error);
 
+    chatBox.innerHTML += `
+        <div class="text-danger">
+            ${error}
+        </div>
+    `;
 });
 </script>
 </x-app-layout>
