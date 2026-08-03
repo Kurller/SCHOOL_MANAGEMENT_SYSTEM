@@ -29,13 +29,13 @@ Each role has access only to the features and resources assigned to them.
 
 ### Dashboard
 
-![Dashboard](docs/images/dashboard.png)
+![Dashboard](docs/images/Dashboard.png)
 
-### Student Management
+### Login Page
 
 ![Login Page](docs/images/Login.png)
 
-### Attendance
+### School AI Assistance
 
 ![School AI Assistance](docs/images/School_AI.png)
 # 🚀 Live Demo
