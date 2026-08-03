@@ -5,7 +5,19 @@ A modern, role-based **School Management System** built with **Laravel 12**, des
 The system provides separate dashboards and permissions for **Administrators, Principals, Teachers, Accountants, Students, Parents**, ensuring secure access to school resources.
 
 ---
+## 📸 Screenshots
 
+### Dashboard
+
+![Dashboard](docs/images/dashboard.png)
+
+### Student Management
+
+![Login Page](docs/images/Login.png)
+
+### Attendance
+
+![School AI Assistance](docs/images/School_AI.png)
 # 🚀 Live Demo
 
 **Application**
